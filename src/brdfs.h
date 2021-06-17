@@ -73,8 +73,33 @@ namespace path
             return PBR_COLOR_WHITE;
         }
     };
-}
 
+//oren-Nayar Diffuse BRDF
+struct OrennayarBRDF : public BaseBRDF
+{
+    virtual Colorf eval(const Ray &in, const HitResult &hit, const Ray &out) override
+        {
+            double sigma = 0.6;double sq_sigma =sigma*sigma;
+            double A = 1.0 - (0.5 * (sq_sigma/ (sq_sigma + 0.33)));
+            double B = 0.45 * (sq_sigma / (sq_sigma + 0.09));
+
+            double theta_in = acos(clamp(dot(out.direction*-1.0,hit.normal),-1.0,1.0));
+            double theta_out = acos( clamp(dot(out.direction,hit.normal),-1.0,1.0));
+            double alpha = (theta_in > theta_out) ? theta_in : theta_out;   // max
+            double beta =  (theta_in > theta_out) ? theta_out : theta_in;   // min
+
+            Vec proj_in  = in.direction + hit.normal*(cosv(in.direction*-1.0,hit.normal));
+            Vec proj_out = out.direction - hit.normal*(cosv(hit.normal,out.direction));
+            double cosDiff = cosv(proj_in,proj_out);       // = cos(phi_in - phi_out)
+            //double phi_in =acos(dot(hit.normal, in.direction*-1.0) / std::sin(theta_in));
+            //double phi_out =acos(dot(hit.normal, out.direction) / std::sin(theta_out));
+            //double diff = A + B * std::cos(phi_in - phi_out) * std::sin(alpha) * std::tan(beta);
+            double diff = A + B * cosDiff * std::sin(alpha) * std::tan(beta);
+
+            return hit.material->color * diff * 2;
+        }
+};
+}
 
 #if 0
 

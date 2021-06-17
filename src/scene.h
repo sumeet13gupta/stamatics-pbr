@@ -94,4 +94,4 @@ using Scene = std::vector<Actor>;
 //// So I don't want this to be defined in each translation unit separately.
 
 extern Scene PBR_SCENE_RTWEEKEND;
-// extern Scene PBR_SCENE_CORNELL;
+extern Scene PBR_SCENE_NEW;

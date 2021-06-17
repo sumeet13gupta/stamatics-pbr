@@ -10,10 +10,10 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Scene and camera
 
-#define PBR_ACTIVE_SCENE PBR_SCENE_RTWEEKEND
+#define PBR_ACTIVE_SCENE PBR_SCENE_NEW
 
-#define PBR_CAMERA_LOOKAT   Vec { 0, 1, 0 }
-#define PBR_CAMERA_POSITION Vec { 0, 2, 5 }
+#define PBR_CAMERA_LOOKAT   Vec { 0, 2, 0 }
+#define PBR_CAMERA_POSITION Vec { 0, 2, 6 }
 #define PBR_CAMERA_FOV_DEG  45
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -27,13 +27,13 @@
 #define PBR_COLOR_GREEN   Colorf { 0.0, 1.0, 0.0 }
 #define PBR_COLOR_BLUE    Colorf { 0.0, 0.0, 1.0 }
 
-#define PBR_BACKGROUND_COLOR PBR_COLOR_BLACK
+#define PBR_BACKGROUND_COLOR PBR_COLOR_WHITE
 
 ///////////////////////////////////////////////////////////////////////////////
 // Output
 
-#define PBR_OUTPUT_IMAGE_COLUMNS 1280
-#define PBR_OUTPUT_IMAGE_ROWS    720
+#define PBR_OUTPUT_IMAGE_COLUMNS 1920
+#define PBR_OUTPUT_IMAGE_ROWS    1080
 #define PBR_OUTPUT_IMAGE_NAME "out.png"
 #define PBR_USE_THREADS 1
 
