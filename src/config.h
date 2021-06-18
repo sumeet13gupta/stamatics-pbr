@@ -3,9 +3,9 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Renderer
 
-#define PBR_MAX_RECURSION_DEPTH 4
+#define PBR_MAX_RECURSION_DEPTH 5
 
-#define PBR_SAMPLES_PER_PIXEL 16
+#define PBR_SAMPLES_PER_PIXEL 8
 
 ///////////////////////////////////////////////////////////////////////////////
 // Scene and camera
@@ -13,7 +13,7 @@
 #define PBR_ACTIVE_SCENE PBR_SCENE_NEW
 
 #define PBR_CAMERA_LOOKAT   Vec { 0, 2, 0 }
-#define PBR_CAMERA_POSITION Vec { 0, 2, 6 }
+#define PBR_CAMERA_POSITION Vec { 0, 2, 7 }
 #define PBR_CAMERA_FOV_DEG  45
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -27,13 +27,13 @@
 #define PBR_COLOR_GREEN   Colorf { 0.0, 1.0, 0.0 }
 #define PBR_COLOR_BLUE    Colorf { 0.0, 0.0, 1.0 }
 
-#define PBR_BACKGROUND_COLOR PBR_COLOR_WHITE
+#define PBR_BACKGROUND_COLOR PBR_COLOR_BLACK
 
 ///////////////////////////////////////////////////////////////////////////////
 // Output
 
-#define PBR_OUTPUT_IMAGE_COLUMNS 1920
-#define PBR_OUTPUT_IMAGE_ROWS    1080
+#define PBR_OUTPUT_IMAGE_COLUMNS 3840       //1920//3840
+#define PBR_OUTPUT_IMAGE_ROWS 2160         //1080//2160
 #define PBR_OUTPUT_IMAGE_NAME "out.png"
 #define PBR_USE_THREADS 1
 

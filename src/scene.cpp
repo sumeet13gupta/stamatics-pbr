@@ -1,6 +1,6 @@
 #include "scene.h"
 #include "brdfs.h"
-
+#define sqr2here 1.41421356237
 ///////////////////////////////////////////////////////////////////////////////
 // Scene description.
 ///////////////////////////////////////////////////////////////////////////////
@@ -122,8 +122,8 @@ Scene PBR_SCENE_NEW = {
         Actor {
             std::make_shared<Material>(
                 Colorf { 1.0, 1.0, 1.0 }, // Color
-                Colorf { 2.0, 2.0, 2.0 },  // Emission
-                new path:: DiffuseBRDF
+                Colorf { 3.0, 3.0, 3.0 },  // Emission
+                new path::DiffuseBRDF      
             ),
             SphereGeometry {
                 Vec { 0.0, 5.0, -0.5 },   // Position
@@ -137,7 +137,7 @@ Scene PBR_SCENE_NEW = {
              std::make_shared<Material>(
                  Colorf { 1.0, 1.0, 0.09 }, // Color
                  Colorf { 0.0, 0.0, 0.0 },  // Emission
-                 new path::DiffuseBRDF
+                 new path::OrennayarBRDF
              ),
              SphereGeometry {
                  Vec { 0.0, 0.5, 0.0 },   // Position
@@ -187,7 +187,7 @@ Scene PBR_SCENE_NEW = {
         // Left wall
         Actor {
             std::make_shared<Material>(
-                Colorf { 1.0, 0.0, 0.0 }, // Color
+                Colorf { 0.8, 0.6, 0.5 }, // Color
                 Colorf { 0.0, 0.0, 0.0 },  // Emission
                 new path::DiffuseBRDF
             ),
@@ -200,7 +200,7 @@ Scene PBR_SCENE_NEW = {
         // Right wall
         Actor {
             std::make_shared<Material>(
-                Colorf { 0.0, 0.0, 1.0 }, // Color
+                Colorf { 0.0, 0.8, 1.0 }, // Color
                 Colorf { 0.0, 0.0, 0.0 },  // Emission
                 new path::DiffuseBRDF
             ),
@@ -209,6 +209,32 @@ Scene PBR_SCENE_NEW = {
                 1e5                      // Radius
             }
         },
+        //r_b wall
+        Actor {
+            std::make_shared<Material>(
+                Colorf { 0.8, 0.4, 0.1 }, // Color
+                Colorf { 0.0, 0.0, 0.0 },  // Emission
+                new path::DiffuseBRDF
+            ),
+            SphereGeometry {
+                Vec { 1e5/sqr2here -2.4, 0.0, 1e5/sqr2here - 2.4 },  // Position
+                1e5                      // Radius
+            }
+        },
+
+        //l_b wall
+        Actor {
+            std::make_shared<Material>(
+                Colorf { 0.0, 0.4, 0.8 }, // Color
+                Colorf { 0.0, 0.0, 0.0 },  // Emission
+                new path::DiffuseBRDF
+            ),
+            SphereGeometry {
+                Vec { -1e5/sqr2here +2.4, 0.0, 1e5/sqr2here - 2.4 },  // Position
+                1e5                      // Radius
+            }
+        },
+
 
         // Roof
         Actor {
@@ -223,3 +249,4 @@ Scene PBR_SCENE_NEW = {
             }
         }
     };
+    
